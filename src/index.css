@@ -1,3 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-cream: #f5f0e6;
+  --color-cream-dark: #e8e0d0;
+  --color-yellow: #5D001E;
+  --color-yellow-light: #7a0027;
+  --color-brown: #1a1a1a;
+  --color-brown-light: #333333;
+  --color-orange: #8B0030;
+  --color-red: #5D001E;
+
+  --font-display: 'Lilita One', cursive;
+  --font-body: 'Poppins', sans-serif;
+}
+
+* {
+  cursor: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-brown);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-yellow);
+  border-radius: 4px;
+}
+
+/* Typography */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-display-xl {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.text-display-lg {
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 1.1;
+}
+
+.text-display-md {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-brown);
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 var(--color-brown-light);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--color-brown-light);
+}
+
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--color-brown-light);
+}
+
+.btn-yellow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--color-yellow);
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 #3d0013;
+}
+
+.btn-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #3d0013;
+}
+
+.btn-yellow:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #3d0013;
+}
+
+/* Cards */
+.card-tilted {
+  background: white;
+  padding: 0.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.card-tilted:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+/* Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  background-color: var(--color-brown);
+  padding: 1rem 0;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 3rem;
+  color: var(--color-yellow);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  white-space: nowrap;
+  letter-spacing: 0.1em;
+}
+
+/* Yellow section */
+.section-yellow {
+  background-color: var(--color-yellow);
+  position: relative;
+}
+
+/* Decorative shapes */
+.blob-yellow {
+  background-color: var(--color-yellow);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 4s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+/* Wiggle animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+/* Smiley face */
+.smiley {
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-yellow);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smiley::before {
+  content: '😊';
+  font-size: 2.5rem;
+}
+
+/* Badge */
+.badge-stamp {
+  background-color: #1a4d2e;
+  color: white;
+  border-radius: 50%;
+  padding: 1.5rem;
+  font-family: var(--font-display);
+  text-align: center;
+  transform: rotate(12deg);
+  border: 3px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* Quote section with images */
+.quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.3;
+  color: var(--color-brown);
+}
+
+.quote-image {
+  display: inline-block;
+  vertical-align: middle;
+  width: clamp(80px, 12vw, 150px);
+  height: clamp(40px, 6vw, 75px);
+  object-fit: cover;
+  border-radius: 100px;
+  margin: 0 0.5rem;
+}
+
+/* Ingredient labels */
+.ingredient-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: var(--color-brown);
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Form inputs */
+.input-playful {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background-color: #fafafa;
+  border: 2px solid #e5e5e5;
+  border-radius: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.input-playful:focus {
+  outline: none;
+  border-color: var(--color-brown);
+  background-color: white;
+}
+
+.input-playful::placeholder {
+  color: #999;
+}
+
+/* Decorative arrow */
+.arrow-hand {
+  color: var(--color-orange);
+  font-size: 2rem;
+}
+
+/* Background Textures */
+
+/* Noise/grain texture - visible film grain effect */
+.texture-noise {
+  position: relative;
+}
+
+.texture-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Paper texture - visible spots and imperfections */
+.texture-paper {
+  position: relative;
+  background-image:
+    radial-gradient(ellipse at 15% 25%, rgba(0,0,0,0.04) 0%, transparent 35%),
+    radial-gradient(ellipse at 85% 75%, rgba(0,0,0,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 45% 85%, rgba(0,0,0,0.03) 0%, transparent 30%),
+    radial-gradient(ellipse at 70% 20%, rgba(0,0,0,0.04) 0%, transparent 25%),
+    radial-gradient(ellipse at 25% 60%, rgba(0,0,0,0.03) 0%, transparent 35%);
+}
+
+/* Grain texture - for dark backgrounds */
+.texture-grain {
+  position: relative;
+}
+
+.texture-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Diagonal lines texture - visible stripes */
+.texture-lines {
+  position: relative;
+}
+
+.texture-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(255,255,255,0.04) 4px,
+    rgba(255,255,255,0.04) 8px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dot pattern texture - visible polka dots */
+.texture-dots {
+  position: relative;
+}
+
+.texture-dots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette effect - more pronounced */
+.texture-vignette {
+  position: relative;
+}
+
+.texture-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
